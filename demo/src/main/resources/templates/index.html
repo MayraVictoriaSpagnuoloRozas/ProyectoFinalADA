@@ -23,63 +23,6 @@
     <br>
     <br>
     <br>
-    <div>
-        <h6><i class="bi bi-person-check"></i>Libros Registrados</h6>
-        <table class="table table-hover">
-            <thead class="table-dark">
-            <tr>
-                <th>Isbn</th>
-                <th>Autor</th>
-                <th>Titulo</th>
-                <th>Año Edicion</th>
-                <th>Cantidad Ejemplares</th>
-                <th>Condicion Ejemplar</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr th:each="LIBRO: ${LIBROS}">
-                <td th:text="${Libro.Idsbn}">Isbn</td>
-                <td th:text="${Libro.nombreAutor}">Autor</td>
-                <td th:text="${Libro.titulo}">Titulo</td>
-                <td th:text="${Libro.añoEdicion}">Año Edicion</td>
-                <td th:text="${Libro.cantidadEjemplares}">Cantidad Ejemplares</td>
-                <td th:text="${Libro.condicionEjemplares}">Condicion Ejemplares</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div>
-        <h6><i class="bi bi-person-check"></i>Autores Registrados</h6>
-        <table class="table table-hover">
-            <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Fecha Nacimiento</th>
-                <th>Lugar Nacimiento</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr th:each="AUTOR: ${AUTORES}">
-                <td th:text="${Autor.Id}">Id</td>
-                <td th:text="${Autor.nombreAutor}">Nombre</td>
-                <td th:text="${Autor.apellidoAutor}">Apellido</td>
-                <td th:text="${Autor.fechaDeNacimiento}">Fecha Nacimiento</td>
-                <td th:text="${Autor.lugarDeNacimiento}">Lugar Nacimiento</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-
 </body>
 </html>
