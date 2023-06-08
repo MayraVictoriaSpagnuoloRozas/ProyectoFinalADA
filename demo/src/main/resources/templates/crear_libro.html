@@ -74,6 +74,10 @@
 
                 </div>
             </div>
+            <td>
+                <a th:href="@{/editar/}+${libro.isbn}" class="btn btn-info"><i class="bi bi-person-exclamation"></i> Editar</a>
+                <a th:href="@{/eliminar/{isbn}(isbn=${libro.isbn})}" class="btn btn-danger"><i class="bi bi-person-x"></i> Eliminar</a>
+            </td>//quiero que aca pueda ingresar un libro nuevo, editar uno ya cargado o borrar uno
 
         </form>
     </div>
