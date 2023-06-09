@@ -56,6 +56,41 @@
     <img src="logo.png" class="rounded" alt="...">
 </div>
 
+//esta bien este script aca???
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+function eliminar(id) {
+console.log(id);
+swal({
+title: "Esta seguro de Eliminar?",
+text: "Una vez eliminado no se prodra restablecer!",
+icon: "warning",
+buttons: true,
+dangerMode: true,
+})
+.then((OK) => {
+if (OK) {
+$.ajax({
+url:"/estudiantes/"+id,
+success: function(res) {
+console.log(res);
+},
+});
+swal("Poof! Registro eliminado!", {
+icon: "success",
+}).then((ok)=>{
+if(ok){
+location.href="/estudiantes";
+}
+});
+}
+});
+}
+</script>
+
 </body>
 
 </html>
