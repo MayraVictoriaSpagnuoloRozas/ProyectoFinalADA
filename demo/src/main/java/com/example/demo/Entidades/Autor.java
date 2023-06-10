@@ -1,4 +1,4 @@
-package Entidades;
+package com.example.demo.Entidades;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +9,8 @@ public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    @Column(name = "autor_id")
+    private Long Id;
 
     @Column(name = "autor_nombre", length = 100, nullable = false)
     private String autorNombre;
@@ -18,7 +19,7 @@ public class Autor {
     private String autorApellido;
 
     @Column(name = "fecha_nacimiento_autor", length = 100, nullable = false)
-    private int fechaDeNacimiento;
+    private Integer fechaDeNacimiento;
 
     @Column(name = "lugar_nacimiento_autor", length = 100, nullable = false)
     private String lugarDeNacimiento;
@@ -30,7 +31,7 @@ public class Autor {
 
     }
 
-    public Autor(Integer id, String autorNombre, String autorApellido, int fechaDeNacimiento,
+    public Autor(Long id, String autorNombre, String autorApellido, Integer fechaDeNacimiento,
                  String lugarDeNacimiento, List<Libro> libros) {
         Id = id;
         this.autorNombre = autorNombre;
@@ -40,11 +41,11 @@ public class Autor {
         this.libros = libros;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         Id = id;
     }
 
@@ -64,11 +65,11 @@ public class Autor {
         this.autorApellido = autorApellido;
     }
 
-    public int getFechaDeNacimiento() {
+    public Integer getFechaDeNacimiento() {
         return fechaDeNacimiento;
     }
 
-    public void setFechaDeNacimiento(int fechaDeNacimiento) {
+    public void setFechaDeNacimiento(Integer fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 

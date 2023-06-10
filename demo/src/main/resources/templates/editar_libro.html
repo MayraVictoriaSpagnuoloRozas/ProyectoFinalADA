@@ -13,65 +13,76 @@
 
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link"
-                                    th:href="@{/listar}">Control de registros</a>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/libros}"><i class="bi bi-person-fill-check"></i>Lista de libros</a>
+            </li>//aca tendria que redirigirme al html de libros
+        </ul>
+
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/nuevoAutor}"><i class="bi bi-person-fill-add"></i> Registrar autor</a>
             </li>
         </ul>
 
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/autores}"><i class="bi bi-person-fill-add"></i> Lista de Autores </a>
+            </li>
+        </ul>
     </div>
 </nav>
 
-<div class="row d-flex justify-content-center">
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6-md-6 col-sm-6 container justify-content-center card">
 
-    <div class="col-sm-4">
-        <form th:action="@{/editar/{id}(id=${libro.isbn})}" th:object=${libro} method="post">
+            <h3>Editar Libro</h3>
+            //estooo   <---<a th:href="@{/editar/}+${libro.id}" class="btn btn-info"><i class="bi bi-person-exclamation"></i> Editar</a>--->
+            <form th:action="@{/editar/{id}(id=${libro.id})}" th:object=${libro} method="post">
 
-            <div class="card">
-                <div class="card-header">
-                    <h3>Editar Libro</h3>
+                <div class="form-group">
+                    <label>Titulo</label>
+                    <input th:field="*{titulo}" type="text" class="form-control" placeholder="Digite el titulo del libro :"
+                           required/>
                 </div>
 
-                <div class="card-body">
-
-                    <div class="form-group">
-                        <label> Titulo</label>
-                        <input th:field="*{titulo}" type="text" class="form-control" placeholder="Digite el titulo :" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Autor</label>
-                        <input th:field="*{autor}" type="text" class="form-control" placeholder="Digite el autor :" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Año de Edicion</label>
-                        <input th:field="*{añoEdicion}" type="text" class="form-control" placeholder="Digite el año de edicion :" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Cantidad Ejemplares</label>
-                        <input th:field="*{cantidadEjemplares}" type="text" class="form-control" placeholder="Digite la cantidad de ejemplares  :" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Calidad Ejemplar</label>
-                        <input th:field="*{calidadEjemplar}" type="text" class="form-control" placeholder="Digite la calidad del ejemplar :" required/>
-                    </div>
+                <div class="form-group">
+                    <label> Autor</label>
+                    <input th:field="*{autor}" type="text" class="form-control"
+                           placeholder="Digite el nombre del autor :" required/>
                 </div>
+
+                <div class="form-group">
+                    <label> Año Edicion</label>
+                    <input th:field="*{añoEdicion}" type="text" class="form-control"
+                           placeholder="Digite el año de edicion :" required/>
+                </div>
+
+                <div class="form-group">
+                    <label>Cantidad ejemplares</label>
+                    <input th:field="*{cantidadEjemplares}" type="text" class="form-control"
+                           placeholder="Digite la cantidad de ejemplares :" required/>
+                </div>
+
+                <div class="form-group">
+                    <label>Calidad Ejemplar</label>
+                    <input th:field="*{calidadEjemplar}" type="text" class="form-control"
+                           placeholder="Digite la calidad del ejemplar :" required/>
+                </div>
+
 
                 <div class="card-footer">
                     <input type="submit" value="Guardar" class="btn btn-success"/>
-                    // aca agrego el boton de eliminar?
-                    <td>
-                        <a th:href="@{/editar/}+${libro.isbn}" class="btn btn-info"><i class="bi bi-person-exclamation"></i> Editar</a>
-                        <a th:href="@{/eliminar/{isbn}(isbn=${libro.isbn})}" class="btn btn-danger"><i class="bi bi-person-x"></i> Eliminar</a>
-                    </td>
+                    <a th:href="@{/eliminar/{isbn}(isbn=${libro.isbn})}" class="btn btn-danger"><i class="bi bi-person-x"></i> Eliminar</a>
+                    <----agregue el boton de eliminar---->
                 </div>
-            </div>
 
-        </form>
+
+            </form>
+        </div>
     </div>
-
 </div>
 
 </body>

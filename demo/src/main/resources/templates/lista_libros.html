@@ -1,3 +1,4 @@
+<thead>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
@@ -14,20 +15,40 @@
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <a class="navbar-brand" th:href="@{/home}"><i class="bi bi-card-checklist"></i> Inicio </a>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/autores}"><i class="bi bi-person-fill-check"></i>Lista de autores</a>
+            </li>
+        </ul>
+
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/nuevoLibro}"><i class="bi bi-person-fill-add"></i> Registrar libro</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/nuevoAutor}"><i class="bi bi-person-fill-add"></i> Registrar autor</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <br>
 
 <div class="container mt-4">
-    <a th:href="@{/new}" class="btn btn-dark"><i class="bi bi-person-fill-add"></i> Lista de Libros</a>
-    <a th:href="@{/listar/}+${libro.isbn}" class="btn btn-info"><i class="bi bi-person-exclamation"></i>Lista actual</a>
-    //me mandé cualquiera??? Quiero que me muestre la lista y me redirija a editar o crear y en editar que me de la posibilidad de eliminar.
+    <a th:href= "@{/nuevoLibro}" class="btn btn-info"><i class="bi bi-person-exclamation"></i>Agregar Libro</a>
+
     <br>
     <br>
     <br>
     <table class="table" margin="center">
         <thead>
-        <tr>
+        <tr><---agrego id?--->
             <th>ISBN</th>
             <th>AUTOR</th>
             <th>TITULO</th>
@@ -44,7 +65,7 @@
             <td th:text="${libro.titulo}">TITULO</td>
             <td th:text="${libro.añoEdicion}">AÑO DE EDICION</td>
             <td th:text="${libro.cantidadEjemplares}">CANTIDAD DE EJEMPLARES</td>
-            <td th:text="${libro.calidadEjemplares}">CALIDAD DE EJEMPLARES</td>//de la 21 a la 46 no se si va
+            <td th:text="${libro.calidadEjemplares}">CALIDAD DE EJEMPLARES</td>
             <td>
                 <a th:href="@{/editar/}+${libro.isbn}" class="btn btn-info"><i class="bi bi-person-exclamation"></i> Editar</a>
                 <a th:href="@{/eliminar/{isbn}(isbn=${libro.isbn})}" class="btn btn-danger"><i class="bi bi-person-x"></i> Eliminar</a>
@@ -58,3 +79,22 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

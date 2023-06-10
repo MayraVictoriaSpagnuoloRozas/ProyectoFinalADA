@@ -1,6 +1,6 @@
-package Servicio;
+package com.example.demo.Servicio;
 
-import Entidades.Autor;
+import com.example.demo.Entidades.Autor;
 
 import java.util.List;
 
