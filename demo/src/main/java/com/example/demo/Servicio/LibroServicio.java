@@ -9,7 +9,7 @@ public interface LibroServicio {
 
     public Libro guardarLibro(Libro libro);
 
-    public Libro obtenerLibroPorIsbn(Long isbn);
+    public Libro obtenerLibroPorId(Long isbn);
 
     public Libro actualizarLibro(Libro libro);
 
