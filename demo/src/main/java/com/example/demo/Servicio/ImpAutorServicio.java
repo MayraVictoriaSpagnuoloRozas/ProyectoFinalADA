@@ -25,7 +25,7 @@ public class ImpAutorServicio implements AutorServicio, UserDetailsService {
     }
 
     @Override
-    public Autor obtenerAutorPorId(Integer Id) {
+    public Autor obtenerAutorPorId(Long Id) {
 
         return repositorio.findById(Id).get();
     }
@@ -37,8 +37,9 @@ public class ImpAutorServicio implements AutorServicio, UserDetailsService {
     }
 
     @Override
-    public void eliminarContacto(Integer Id) {
-        return repositorio.deleteById(Id);
+    public Autor eliminarContacto(Long Id) {
+
+        return repositorio.deleteById();
 
     }
 

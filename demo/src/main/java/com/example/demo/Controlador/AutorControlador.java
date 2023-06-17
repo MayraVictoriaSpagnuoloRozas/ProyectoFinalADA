@@ -1,5 +1,4 @@
 package com.example.demo.Controlador;
-
 import com.example.demo.Entidades.Autor;
 import com.example.demo.Servicio.AutorServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +45,7 @@ public class AutorControlador {
 
     @GetMapping("/listar")
     public String verPaginaDeInicioC(Model modelo) {//ModelMap pasa variables del controlador a nuestro html
-        List<Autor> autor = AutorServicio.listarTodosLosAutores();
+        List<Autor> autor = autorServicio.listarTodosLosAutores();
 
         modelo.addAttribute("autor", autor);//addAtribute manda 2 argumentos, el identificador
         //que coincide con el Thymeleaf y el objeto que queremos mandar por html
@@ -81,8 +80,8 @@ public class AutorControlador {
 
     @GetMapping("/editar/{id}")
     public String mostrarFormularioDeEditarAutor(@PathVariable Long id, Model modelo) {
-        Autor contacto = autorServicio.obtenerAutorPorId(id);
-        modelo.addAttribute("autor", contacto);
+        Autor autor = autorServicio.obtenerAutorPorId(id);
+        modelo.addAttribute("autor", autor);
         return "editar_autor";
     }
 
@@ -90,14 +89,14 @@ public class AutorControlador {
     public String actualizarAutor(@PathVariable Long id,@Validated Autor autor,
                                      BindingResult bindingResult,RedirectAttributes redirect,Model modelo) {
 
-        Autor contactoDB = autorServicio.obtenerAutorPorId(Id);
+        Autor autorDB = autorServicio.obtenerAutorPorId(id);
         if(bindingResult.hasErrors()) {
             modelo.addAttribute("autor", autor);
             return "editar_autor";
         }
 
-        autorDB.setNombre(autor.getNombre());
-        autorDB.setTelefono(autor.getTelefono());
+        autorDB.setAutorNombre(autor.getAutorNombre());
+        autorDB.setAutorApellido(autor.getAutorApellido());
 
 
         autorServicio.guardarAutor(autorDB);
@@ -109,10 +108,10 @@ public class AutorControlador {
 
 
     @GetMapping("/eliminar/{id}")
-    public String eliminarContacto(@PathVariable Long Id,RedirectAttributes redirect) {
-        Autor contacto = autorServicio.obtenerAutorPorId(Id);
+    public String eliminarAutor(@PathVariable Long Id,RedirectAttributes redirect) {
+        Autor autor = autorServicio.obtenerAutorPorId(Id);
 
-        autorServicio.eliminarContacto((Integer) contacto.getId());
+        autorServicio.eliminarautor((Long) autor.getId());
 
         redirect.addFlashAttribute("msgExito", "El autor ha " +
                 "sido eliminado correctamente");

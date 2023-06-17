@@ -9,9 +9,9 @@ public interface AutorServicio {
 
     public Autor guardarAutor(Autor autor);
 
-    public Autor obtenerAutorPorId(Integer id);
+    public Autor obtenerAutorPorId(Long id);
 
     public Autor actualizarAutor(Autor autor);
 
-    public void eliminarContacto(Integer id);
+    public Autor eliminarautor(Long id);
 }

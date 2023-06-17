@@ -1,5 +1,4 @@
 package com.example.demo.Entidades;
-
 import javax.persistence.*;
 
 @Entity
