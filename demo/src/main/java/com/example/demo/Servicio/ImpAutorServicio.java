@@ -37,11 +37,10 @@ public class ImpAutorServicio implements AutorServicio, UserDetailsService {
     }
 
     @Override
-    public Autor eliminarContacto(Long Id) {
-
-        return repositorio.deleteById();
-
+    public Autor eliminarautor(Long id) {
+        return  repositorio.deleteById();
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

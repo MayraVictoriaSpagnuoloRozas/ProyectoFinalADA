@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/registro")//ver todas las vistas
-public class UsuarioControlador {
+public class RegistroUsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 

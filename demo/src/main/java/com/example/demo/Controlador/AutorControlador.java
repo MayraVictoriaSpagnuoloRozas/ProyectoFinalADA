@@ -1,6 +1,8 @@
 package com.example.demo.Controlador;
 import com.example.demo.Entidades.Autor;
+import com.example.demo.Entidades.Usuario;
 import com.example.demo.Servicio.AutorServicio;
+import com.example.demo.Servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
 
 @Controller
@@ -21,20 +22,7 @@ public class AutorControlador {
 
 
     @Autowired
-    private AutorServicio Aservicio;
-
-
-    @GetMapping("/login")
-    public String iniciarSesion(){
-
-        return "login";
-    }
-
-    @GetMapping("/")
-    public String verPaginaDeInicio(Model modelo){
-        modelo.addAttribute("autor", Aservicio.listarTodosLosAutores());
-        return "index";
-    }
+    private UsuarioServicio uServicio;
 
     @GetMapping("/home")
     public String home(){
@@ -42,26 +30,38 @@ public class AutorControlador {
         return "home";
     }
 
+    @GetMapping("/login")
+    public String iniciarSesion(){
 
-    @GetMapping("/listar")
-    public String verPaginaDeInicioC(Model modelo) {//ModelMap pasa variables del controlador a nuestro html
+        return "login";
+    }
+
+    @GetMapping("usuario")
+    public String desplegarUsuario(Model modelo){//no se que onda aca
+        List<Usuario> usuario = uServicio.listarUsuarios();
+        modelo.addAttribute("usuario", usuario);
+        return "registro";
+    }
+
+    @GetMapping("/autor")
+    public String verPaginaDeInicio(Model modelo) {//ModelMap pasa variables del controlador a nuestro html
         List<Autor> autor = autorServicio.listarTodosLosAutores();
 
         modelo.addAttribute("autor", autor);//addAtribute manda 2 argumentos, el identificador
         //que coincide con el Thymeleaf y el objeto que queremos mandar por html
-        return "lista";
+        return "autor";
     }
 
 
-    @GetMapping("/new")
+    @GetMapping("/nuevoAutor")
     public String crearAutor (Model modelo){
-
+        Autor autor = new Autor();
         modelo.addAttribute("autor", new Autor());
         return "crear_autor";
     }
 
 
-    @PostMapping("/save")
+    @PostMapping("/autor")
     public String guardarAutor(@Validated Autor autor, BindingResult bindingResult,
                                   RedirectAttributes redirect, Model modelo) {
 
@@ -74,7 +74,7 @@ public class AutorControlador {
         redirect.addFlashAttribute("msgExito", "El autor ha" +
                 " sido agregado con exito");
 
-        return "redirect:/listar";
+        return "redirect:/autor";
     }
 
 
@@ -103,7 +103,7 @@ public class AutorControlador {
         redirect.addFlashAttribute("msgExito", "El autor " +
                 "ha sido actualizado correctamente");
 
-        return "redirect:/listar";
+        return "redirect:/autor";
     }
 
 
@@ -116,7 +116,7 @@ public class AutorControlador {
         redirect.addFlashAttribute("msgExito", "El autor ha " +
                 "sido eliminado correctamente");
 
-        return "redirect:/listar";
+        return "redirect:/autor";
     }
 
 }

@@ -1,7 +1,7 @@
 package com.example.demo.Servicio;
 
 import com.example.demo.Entidades.Autor;
-
+import com.example.demo.Servicio.AutorServicio;
 import java.util.List;
 
 public interface AutorServicio {

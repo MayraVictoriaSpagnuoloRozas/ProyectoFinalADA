@@ -1,6 +1,8 @@
 package com.example.demo.Controlador;
 import com.example.demo.Entidades.Libro;
+import com.example.demo.Entidades.Usuario;
 import com.example.demo.Servicio.LibroServicio;
+import com.example.demo.Servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,27 +22,25 @@ public class Librocontrolador {
 
 
     @Autowired
-    private LibroServicio Lservicio;
-
-
-    @GetMapping("/login")
-    public String iniciarSesion(){
-
-        return "login";
-    }
-
-    @GetMapping("/")
-    public String verPaginaDeInicio(Model modelo){
-        modelo.addAttribute("autor", Lservicio.listarTodosLosLibros());
-        return "index";
-    }
+    private UsuarioServicio Uservicio;
 
     @GetMapping("/home")
     public String home(){
 
         return "home";
     }
+    @GetMapping("/login")
+    public String iniciarSesion(){
 
+        return "login";
+    }
+
+    @GetMapping("usuario")
+    public String verPaginaDeUsuario(Model modelo){//no se que onda aca
+        List<Usuario> usuario = Uservicio.listarUsuarios();
+        modelo.addAttribute("usuario", usuario);
+        return "registro";
+    }
 
     @GetMapping("/listar")
     public String verPaginaDeInicioC(Model modelo) {//ModelMap pasa variables del controlador a nuestro html
