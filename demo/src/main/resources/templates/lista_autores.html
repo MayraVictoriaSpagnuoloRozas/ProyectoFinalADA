@@ -59,10 +59,10 @@
         <tbody>
         <tr th:each="autor:${autores}">
             <td th:text="${autor.id}">ID</td>
-            <td th:text="${autor.nombre}">NOMBRE</td>
-            <td th:text="${autor.apellido}">APELLIDO</td>
-            <td th:text="${autor.fechaNacimiento}">FECHA DE NACIMIENTO</td>
-            <td th:text="${autor.lugarNacimiento}">LUGAR DE NACIMIENTO</td>
+            <td th:text="${autor.autor_nombre}">NOMBRE</td>
+            <td th:text="${autor.autor_apellido}">APELLIDO</td>
+            <td th:text="${autor.fecha_nacimiento_autor}">FECHA DE NACIMIENTO</td>
+            <td th:text="${autor.lugar_nacimiento_autor}">LUGAR DE NACIMIENTO</td>
 
             <td>
                 <a th:href="@{/editar/}+${autor.id}" class="btn btn-info"><i class="bi bi-person-exclamation"></i> Editar</a>

@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-public class ImpAutorServicio implements AutorServicio, UserDetailsService {
+@Service
+public class ImpAutorServicio implements AutorServicio {
     @Autowired
     private AutorRepositorio repositorio;
     @Override
@@ -42,8 +43,5 @@ public class ImpAutorServicio implements AutorServicio, UserDetailsService {
     }
 
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
+
 }

@@ -24,22 +24,23 @@ public class Librocontrolador {
     @Autowired
     private UsuarioServicio Uservicio;
 
-    @GetMapping("/home")
-    public String home(){
 
-        return "home";
-    }
     @GetMapping("/login")
     public String iniciarSesion(){
 
         return "login";
     }
 
-    @GetMapping("usuario")
+    @GetMapping("")
     public String verPaginaDeUsuario(Model modelo){//no se que onda aca
         List<Usuario> usuario = Uservicio.listarUsuarios();
         modelo.addAttribute("usuario", usuario);
-        return "registro";
+        return "index";
+    }
+    @GetMapping("/home")
+    public String home(){
+
+        return "home";
     }
 
     @GetMapping("/listar")
@@ -48,7 +49,7 @@ public class Librocontrolador {
 
         modelo.addAttribute("libro", libro);//addAtribute manda 2 argumentos, el identificador
         //que coincide con el Thymeleaf y el objeto que queremos mandar por html
-        return "lista";
+        return "libro";
     }
 
 

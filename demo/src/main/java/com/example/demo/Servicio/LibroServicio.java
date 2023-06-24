@@ -1,6 +1,7 @@
 package com.example.demo.Servicio;
 
 import com.example.demo.Entidades.Libro;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

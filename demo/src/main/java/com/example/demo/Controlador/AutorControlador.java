@@ -21,34 +21,13 @@ public class AutorControlador {
     private AutorServicio autorServicio;
 
 
-    @Autowired
-    private UsuarioServicio uServicio;
-
-    @GetMapping("/home")
-    public String home(){
-
-        return "home";
-    }
-
-    @GetMapping("/login")
-    public String iniciarSesion(){
-
-        return "login";
-    }
-
-    @GetMapping("usuario")
-    public String desplegarUsuario(Model modelo){//no se que onda aca
-        List<Usuario> usuario = uServicio.listarUsuarios();
-        modelo.addAttribute("usuario", usuario);
-        return "registro";
-    }
 
     @GetMapping("/autor")
-    public String verPaginaDeInicio(Model modelo) {//ModelMap pasa variables del controlador a nuestro html
+    public String verPaginaDeInicio(Model modelo) {//ModelMap pasa variables del controlador al html
         List<Autor> autor = autorServicio.listarTodosLosAutores();
 
         modelo.addAttribute("autor", autor);//addAtribute manda 2 argumentos, el identificador
-        //que coincide con el Thymeleaf y el objeto que queremos mandar por html
+        //que coincide con el Thymeleaf y el objeto que mando por html
         return "autor";
     }
 
@@ -57,7 +36,7 @@ public class AutorControlador {
     public String crearAutor (Model modelo){
         Autor autor = new Autor();
         modelo.addAttribute("autor", new Autor());
-        return "crear_autor";
+        return "nuevoAutor";
     }
 
 
@@ -67,7 +46,7 @@ public class AutorControlador {
 
         if(bindingResult.hasErrors()) {
             modelo.addAttribute("autor", autor);
-            return "crear_autor";
+            return "nuevoAutor";
         }
 
         autorServicio.guardarAutor(autor);
@@ -82,7 +61,7 @@ public class AutorControlador {
     public String mostrarFormularioDeEditarAutor(@PathVariable Long id, Model modelo) {
         Autor autor = autorServicio.obtenerAutorPorId(id);
         modelo.addAttribute("autor", autor);
-        return "editar_autor";
+        return "nuevoAutor";
     }
 
     @PostMapping("/editar/{id}")
@@ -92,7 +71,7 @@ public class AutorControlador {
         Autor autorDB = autorServicio.obtenerAutorPorId(id);
         if(bindingResult.hasErrors()) {
             modelo.addAttribute("autor", autor);
-            return "editar_autor";
+            return "nuevoAutor";
         }
 
         autorDB.setAutorNombre(autor.getAutorNombre());
