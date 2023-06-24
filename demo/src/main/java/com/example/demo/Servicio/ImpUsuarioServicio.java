@@ -24,16 +24,16 @@ public class ImpUsuarioServicio {
     private UsuarioRepositorio usuarioRepositorio;
 
     @Override
-    public Usuario guardar(UsuarioDto usuarioDto) {
-        Usuario usuario = new Usuario(usuarioDto.getRol(),
-                usuarioDto.getId(),usuarioDto.getPassword(),
-                passwordEncoder.encode(usuarioDto.getPassword()), Arrays.asList(new Rol("ROLE_USER")));
+    public Usuario guardar(UsuarioDto registroDTO) {
+        Usuario usuario = new Usuario(registroDTO.getId(),
+                registroDTO.getRol(),registroDTO.getPassword(),
+                passwordEncoder.encode(registroDTO.getPassword()), Arrays.asList(new Rol("ROLE_USER")));
         return usuarioRepositorio.save(usuario);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepositorio.findById(Long aLong);
+        Usuario usuario = usuarioRepositorio.findById(Long id);
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuario o password inválidos");
         }
@@ -43,5 +43,6 @@ public class ImpUsuarioServicio {
     private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
     }
+
 
 }
