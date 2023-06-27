@@ -11,12 +11,14 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class ImpUsuarioServicio {
+@Service
+public class ImpUsuarioServicio implements UsuarioServicio{
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -30,10 +32,9 @@ public class ImpUsuarioServicio {
                 passwordEncoder.encode(registroDTO.getPassword()), Arrays.asList(new Rol("ROLE_USER")));
         return usuarioRepositorio.save(usuario);
     }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepositorio.findById(Long id);
+        Usuario usuario = usuarioRepositorio.findByEmail(username);
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuario o password inválidos");
         }
@@ -43,6 +44,5 @@ public class ImpUsuarioServicio {
     private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
     }
-
 
 }

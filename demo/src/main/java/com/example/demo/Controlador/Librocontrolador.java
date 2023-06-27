@@ -1,7 +1,6 @@
 package com.example.demo.Controlador;
 import com.example.demo.Entidades.Autor;
 import com.example.demo.Entidades.Libro;
-import com.example.demo.Entidades.Usuario;
 import com.example.demo.Servicio.AutorServicio;
 import com.example.demo.Servicio.LibroServicio;
 import com.example.demo.Servicio.UsuarioServicio;
@@ -25,7 +24,7 @@ public class Librocontrolador {
 
 
     @Autowired
-    private UsuarioServicio Uservicio;
+    private UsuarioServicio usuarioServicio;
 
 
     @GetMapping("/login")
@@ -95,7 +94,7 @@ public class Librocontrolador {
     public String eliminarLibro(@PathVariable Long id, RedirectAttributes redirect) {
         Libro libro = libroServicio.obtenerLibroPorId(id);
 
-        libroServicio.eliminarLibro(id);
+        libroServicio.eliminarLibro(libro);
 
         redirect.addFlashAttribute("msgExito", "El libro ha " +
                 "sido eliminado correctamente");

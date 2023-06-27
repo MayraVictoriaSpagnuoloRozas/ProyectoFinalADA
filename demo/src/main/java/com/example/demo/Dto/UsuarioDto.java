@@ -4,6 +4,11 @@ public class UsuarioDto {
     private long id;
     private String rol;
     private String password;
+    private String email;
+
+    public UsuarioDto() {
+
+    }
 
     public UsuarioDto(long id, String rol, String password) {
         this.id = id;
@@ -16,7 +21,10 @@ public class UsuarioDto {
         this.password = password;
     }
 
-    public UsuarioDto() {
+    public UsuarioDto(String email, String password, String rol) {
+        this.rol = rol;
+        this.email = email;
+        this.password = password;
 
     }
 
@@ -41,6 +49,8 @@ public class UsuarioDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setEmail(String email) {this.email = email;}
 }
 
 

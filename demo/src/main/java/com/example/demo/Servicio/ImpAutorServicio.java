@@ -38,9 +38,7 @@ public class ImpAutorServicio implements AutorServicio {
     }
 
     @Override
-    public Autor eliminarautor(Long id) {
-        return  repositorio.deleteById();
-    }
+    public void eliminarautor(Autor autor){};
 
 
 

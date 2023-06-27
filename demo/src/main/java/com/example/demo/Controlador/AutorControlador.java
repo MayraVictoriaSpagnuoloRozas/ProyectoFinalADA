@@ -1,8 +1,6 @@
 package com.example.demo.Controlador;
 import com.example.demo.Entidades.Autor;
-import com.example.demo.Entidades.Usuario;
 import com.example.demo.Servicio.AutorServicio;
-import com.example.demo.Servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,18 +22,16 @@ public class AutorControlador {
 
     @GetMapping("/autor")
     public String verPaginaDeInicio(Model modelo) {//ModelMap pasa variables del controlador al html
-        List<Autor> autor = autorServicio.listarTodosLosAutores();
-
-        modelo.addAttribute("autor", autor);//addAtribute manda 2 argumentos, el identificador
+        modelo.addAttribute("autor", autorServicio.listarTodosLosAutores());//addAtribute manda 2 argumentos, el identificador
         //que coincide con el Thymeleaf y el objeto que mando por html
-        return "autor";
+        return "autor";// aca paso algo???
     }
 
 
     @GetMapping("/nuevoAutor")
     public String crearAutor (Model modelo){
         Autor autor = new Autor();
-        modelo.addAttribute("autor", new Autor());
+        modelo.addAttribute("autor", autor);
         return "nuevoAutor";
     }
 
@@ -87,10 +83,10 @@ public class AutorControlador {
 
 
     @GetMapping("/eliminar/{id}")
-    public String eliminarAutor(@PathVariable Long Id,RedirectAttributes redirect) {
+    public String eliminarAutor(@PathVariable Long Id, RedirectAttributes redirect) {
         Autor autor = autorServicio.obtenerAutorPorId(Id);
 
-        autorServicio.eliminarautor((Long) autor.getId());
+        autorServicio.eliminarautor(autor);
 
         redirect.addFlashAttribute("msgExito", "El autor ha " +
                 "sido eliminado correctamente");

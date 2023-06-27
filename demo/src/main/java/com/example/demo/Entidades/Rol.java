@@ -11,6 +11,11 @@ public class Rol {
     @Column (name="nombre")
     private String nombre;
 
+    public Rol() {
+    }
+    public Rol (String nombre) {
+        this.nombre = nombre;
+    }
     public Rol(long id, String nombre) {
         this.id = id;
         this.nombre = nombre;

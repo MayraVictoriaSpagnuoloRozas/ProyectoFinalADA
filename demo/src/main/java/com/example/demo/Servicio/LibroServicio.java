@@ -14,5 +14,5 @@ public interface LibroServicio {
 
     public Libro actualizarLibro(Libro libro);
 
-    public void eliminarLibro(Long isbn);
+    public void eliminarLibro(Libro libro);
 }

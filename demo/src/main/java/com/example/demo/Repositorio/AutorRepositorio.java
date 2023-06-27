@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AutorRepositorio extends JpaRepository<Autor, Long> {
-    Autor deleteById();
 }

@@ -15,5 +15,5 @@ public interface AutorServicio {
 
     public Autor actualizarAutor(Autor autor);
 
-    public Autor eliminarautor(Long id);
+    public void eliminarautor(Autor autor);
 }

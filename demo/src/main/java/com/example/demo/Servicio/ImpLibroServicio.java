@@ -37,8 +37,8 @@ public class ImpLibroServicio implements LibroServicio {
     }
 
     @Override
-    public void eliminarLibro(Long id) {
-        repositorio.deleteById(id);
+    public void eliminarLibro(Libro libro) {
+        repositorio.delete(libro);
 
     }
 
