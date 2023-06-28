@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/registro")//ver todas las vistas
+@RequestMapping("/registro")
 public class RegistroUsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
