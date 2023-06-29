@@ -53,14 +53,14 @@ public class Librocontrolador {
         Libro libro = new Libro();
         List<Autor> listaAutores = autorServicio.listarTodosLosAutores();
 
-        modelo.addAttribute("libro", libro);
+        modelo.addAttribute("libros", libro);
         modelo.addAttribute("autor", listaAutores);
 
-        return "crear_libro";
+        return "libro/nuevo";
     }
 
     @PostMapping("/libro")
-    public String guardarLibro(@ModelAttribute("libro") Libro libro, RedirectAttributes redirect) {
+    public String guardarLibro(@ModelAttribute("libros") Libro libro, RedirectAttributes redirect) {
         libroServicio.guardarLibro(libro);
 
         redirect.addFlashAttribute("msgExito", "El libro ha" +
@@ -71,12 +71,12 @@ public class Librocontrolador {
 
     @GetMapping("/libro/editar/{id}")
     public String mostrarFormularioDeEditar(@PathVariable Long id, Model modelo) {
-        modelo.addAttribute("libro", libroServicio.obtenerLibroPorId(id));
-        return "editar_libro";
+        modelo.addAttribute("libros", libroServicio.obtenerLibroPorId(id));
+        return "libro/nuevo";
     }
 
     @PostMapping("/libro/{id}")
-    public String actualizarLibro(@PathVariable Long id, @ModelAttribute("libro") Libro libro, Model modelo) {
+    public String actualizarLibro(@PathVariable Long id, @ModelAttribute("libros") Libro libro, Model modelo) {
         Libro libroExistente = libroServicio.obtenerLibroPorId(id);
 
         libroExistente.setIsbn(libro.getIsbn());

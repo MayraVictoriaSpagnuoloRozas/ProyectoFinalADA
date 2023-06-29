@@ -1,45 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-    <title>Registro de Autor</title>
+    <title>Registrar autor</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Diseño links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-
+    <!-- Icons links -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
-<body background="fondo.jpg">
+<body>
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" th:href="@{/home}"><i class="bi bi-house-gear-fill"></i> Inicio </a>
-
+    <a type="button" class="btn btn-outline-light" href="#"><i class="bi bi-person-fill-add"></i> Administración de
+        autores </a>
+    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/libros}"><i class="bi bi-person-fill-check"></i>Lista de libros</a>
+                <a class="nav-link" th:href="@{/autor}"><i class="bi bi-person-vcard-fill"></i> Control de autores</a>
             </li>
         </ul>
     </div>
 
-
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/nuevoLibro}"><i class="bi bi-person-fill-add"></i> Registrar libro</a>
-            </li>
-        </ul>
-    </div>
-
-
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/autor}"><i class="bi bi-person-fill-add"></i> Lista de autores</a>
-            </li>
-        </ul>
-    </div>
     <div class="text-end">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -49,54 +36,59 @@
         </ul>
     </div>
 </nav>
+<!-- Fondo del form de registros de autor con link de imagen -->
+<div class="bg-image" style=" background-image:
+            url('https://i.pinimg.com/564x/40/ba/4e/40ba4e25d4ecb1bd9efc85f1bfca6822.jpg');
+             height: 100vh;" >
 
-<div class="row d-flex justify-content-center">
-    <div class="col-sm-4">
-        <form th:action="@{/save}" th:object=${libro} method="post">
-            <br>
+    <br>
 
-            <div class="card">
-                <div class="card-header">
-                    <h3>Registro de Autor</h3>
+    <div class="container">
+        <div class="row d-flex container justify-content-center">
+            <div class="col-sm-7">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h1 style="text-align:center" class="p-3 mb-2 bg-success bg-gradient text-white"><em> Administración de autores </em></h1>
+                    </div>
+
+                    <div class="card-body">
+                        <form th:action="@{/autor}" th:object="${autor}" method="POST">
+
+                            <div class="form-group">
+                                <label>Nombre : </label>
+                                <input type="text" name="autor_nombre" th:field="*{autor_nombre}" class="form-control" placeholder="Digite el nombre :" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Apellido : </label>
+                                <input type="text" name="autor_apellido" th:field="*{autor_apellido}" class="form-control" placeholder="Digite el apellido :" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Lugar de Nacimiento : </label>
+                                <input type="text" name="lugar_nacimiento_autor" th:field="*{lugar_nacimiento_autor}"
+                                       class="form-control" placeholder="Digite el lugar de nacimiento :" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento : </label>
+                                <input type="date" name="fecha_nacimiento_autor" th:field="*{fecha_nacimiento_autor}"
+                                       class="form-control" placeholder="Digite el fecha de nacimiento :" required>
+                            </div>
+
+                            <br>
+
+                            <div class="box-footer">
+                                <button class="btn btn-success"><i class="bi bi-cloud-download-fill"></i> Guardar</button>
+                                <a th:href="@{/autor}" class="btn btn-dark"><i class="bi bi-x-circle"></i> Cancelar</a>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
-
-                <div class="card-body">
-
-                    <div class="form-group">
-                        <label> Nombre</label>
-                        <input th:field="*{autor_nombre}" type="text" class="form-control" placeholder="Digite el nombre del autor :"
-                               required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label> Apellido</label>
-                        <input th:field="*{autor_apellido}" type="text" class="form-control"
-                               placeholder="Digite el apellido del autor :" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label> Año de Nacimiento</label>
-                        <input th:field="*{año_nacimiento_autor}" type="text" class="form-control"
-                               placeholder="Digite el año de nacimiento :" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Lugar de Nacimiento</label>
-                        <input th:field="*{lugar_nacimiento_autor}" type="text" class="form-control"
-                               placeholder="Digite el lugar de nacimiento :" required/>
-                    </div>
-
-                </div>
-
-                <div class="card-footer">
-                    <input type="submit" value="Guardar" class="btn btn-success"/><i class="bi bi-person-fill-check"></i>
-<...o save???>      <a th:href="@{/autores}" class="btn btn-dark"><i class="bi bi-x-circle"></i> Cancelar</a>
-                </div>
-
-        </form>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
- </div>
 </body>
-</html
+</html>
