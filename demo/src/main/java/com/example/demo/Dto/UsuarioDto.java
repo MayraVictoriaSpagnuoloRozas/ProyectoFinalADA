@@ -2,45 +2,40 @@ package com.example.demo.Dto;
 
 public class UsuarioDto {
     private long id;
-    private String rol;
     private String password;
+    private String nombre;
+    private String apellido;
     private String email;
 
     public UsuarioDto() {
 
     }
 
-    public UsuarioDto(long id, String rol, String password) {
+    public UsuarioDto(long id, String password, String nombre, String apellido, String email) {
         this.id = id;
-        this.rol = rol;
         this.password = password;
-    }
-
-    public UsuarioDto(String rol, String password) {
-        this.rol = rol;
-        this.password = password;
-    }
-
-    public UsuarioDto(String email, String password, String rol) {
-        this.rol = rol;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.email = email;
+    }
+    public UsuarioDto(String password, String nombre, String apellido, String email) {
         this.password = password;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+    }
 
+    public UsuarioDto(String email) {
+        this.email = email;
     }
 
     public long getId() {
         return id;
     }
 
-
-    public String getRol() {
-        return rol;
+    public void setId(long id) {
+        this.id = id;
     }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
 
     public String getPassword() {
         return password;
@@ -50,7 +45,29 @@ public class UsuarioDto {
         this.password = password;
     }
 
-    public void setEmail(String email) {this.email = email;}
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
 
 

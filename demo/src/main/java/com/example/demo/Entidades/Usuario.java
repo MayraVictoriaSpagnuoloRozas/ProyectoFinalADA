@@ -13,6 +13,9 @@ public class Usuario {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column (name= "apellido")
+    private String apellido;
+
     @Column (name= "email")
     private String email;
 
@@ -31,9 +34,18 @@ public class Usuario {
 
     }
 
-    public Usuario(long id, String nombre, String email, String password, Collection<Rol> rol) {
+    public Usuario(long id, String nombre, String apellido, String email, String password, Collection<Rol> rol) {
         this.id = id;
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.rol = rol;
+    }
+
+    public Usuario(String nombre, String apellido, String email, String password, Collection<Rol> rol) {
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.email = email;
         this.password = password;
         this.rol = rol;
@@ -53,6 +65,14 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getEmail() {
